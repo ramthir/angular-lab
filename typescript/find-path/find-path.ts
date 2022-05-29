@@ -1,6 +1,6 @@
-//      [ A ][ B ][ C ][ D ]
-// [ E ][ F ][ G ][ H ][ I ][ J ]
-//      [ K ][ L ][ M ][ N ]
+//      [ A ][ B ][ C ][ D ]                          N
+// [ E ][ F ][ G ][ H ][ I ][ J ]                  W     E
+//      [ K ][ L ][ M ][ N ]                          S
 //           [ O ]
 
 type Room = {
@@ -22,18 +22,18 @@ const news: (keyof Room)[] = ['north', 'east', 'south', 'west'];
 const rooms: Room[] = [
   { name: 'A', east: 'B', south: 'F' },
   { name: 'B', east: 'C', south: 'G', west: 'A' },
-  { name: 'C', east: 'D', south: 'H', west: 'D' },
+  { name: 'C', east: 'D', south: 'H', west: 'B' },
   { name: 'D', south: 'I', west: 'C' },
   { name: 'E', east: 'F' },
-  { name: 'F', north: 'A', east: 'G', west: 'K', south: 'E' },
-  { name: 'G', north: 'B', east: 'H', west: 'L', south: 'F' },
-  { name: 'H', north: 'C', east: 'I', west: 'M', south: 'G' },
-  { name: 'I', north: 'D', east: 'J', west: 'N', south: 'H' },
-  { name: 'J', south: 'I' },
+  { name: 'F', north: 'A', east: 'G', west: 'E', south: 'K' },
+  { name: 'G', north: 'B', east: 'H', west: 'F', south: 'L' },
+  { name: 'H', north: 'C', east: 'I', west: 'G', south: 'M' },
+  { name: 'I', north: 'D', east: 'J', west: 'H', south: 'N' },
+  { name: 'J', west: 'I' },
   { name: 'K', north: 'F', east: 'L' },
-  { name: 'L', north: 'G', east: 'M', west: 'O', south: 'K' },
-  { name: 'M', north: 'H', east: 'N', south: 'L' },
-  { name: 'N', north: 'I', south: 'M' },
+  { name: 'L', north: 'G', east: 'M', west: 'K', south: 'O' },
+  { name: 'M', north: 'H', east: 'N', west: 'L' },
+  { name: 'N', north: 'I', west: 'M' },
   { name: 'O', north: 'L' },
 ];
 
@@ -72,4 +72,4 @@ function findRoom(from: string, to: string) {
   );
 }
 
-console.log(findRoom('A', 'B'));
+console.log(findRoom('A', 'E')[0]);
